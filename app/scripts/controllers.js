@@ -1,17 +1,8 @@
 'use strict';
 
-angular.module('starter.controllers', [])
+angular.module('breathe.controllers', [])
 
 .controller('BreatheCtrl', ['$scope', '$interval', 'Settings', '$cordovaVibration', function($scope, $interval, Settings, $cordovaVibration) {
-  console.log($cordovaVibration);
-  console.log($cordovaVibration.vibrate);
-      console.log(navigator.vibrate);
-  document.addEventListener("deviceready", onDeviceReady, false);
-  function onDeviceReady() {
-      console.log(navigator.vibrate);
-  }
-  // $cordovaVibration.vibrate(1);
-  // $cordovaVibration.vibrate(100);
   var delta = 40;
 
   var lastTick;
@@ -31,6 +22,8 @@ angular.module('starter.controllers', [])
 
   function vibrate(action) {
     if (Settings.get('vibrate')) {
+      // TODO: Figure out why $cordovaVibration.vibrate(100) leads to an
+      // 'undefined' error somewhere in the cordova library.
       navigator.vibrate(Settings.get('vibrations')[action]);
     }
   }
@@ -113,7 +106,6 @@ angular.module('starter.controllers', [])
   }
 
   $scope.save = save;
-
 });
 
 function range(start, end) {

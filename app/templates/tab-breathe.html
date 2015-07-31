@@ -22,7 +22,7 @@
         animation="easeInOutQuart"></div>
 
     <div>
-      <p ng-show="running" class="action">{{ ds.action }}: {{ ds.countdown }}</p>
+      <p ng-show="running" class="action">{{ ds.action | translate | capitalize }}: {{ ds.countdown }}</p>
       <p ng-hide="running" class="action">Click play to start.</p>
     </div>
     <div>

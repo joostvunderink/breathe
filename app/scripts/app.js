@@ -1,13 +1,11 @@
 'use strict';
 
-// Ionic Starter App
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'breathe' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'angular-svg-round-progress', 'ngCordova'])
+// 'breathe.services' is found in services.js
+// 'breathe.controllers' is found in controllers.js
+angular.module('breathe', ['ionic', 'breathe.controllers', 'breathe.services', 'breathe.filters', 'angular-svg-round-progress', 'ngCordova', 'pascalprecht.translate'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,7 +23,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
+
+  $translateProvider.translations('en', {
+    'in': 'breathe in',
+    'out': 'breathe out',
+    'hold': 'hold breath'
+  });
+  $translateProvider.preferredLanguage('en');
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router

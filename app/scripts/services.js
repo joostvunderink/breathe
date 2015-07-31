@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter.services', [])
+angular.module('breathe.services', [])
 
 .factory('Settings', function() {
   var settings = {
