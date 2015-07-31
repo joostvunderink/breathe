@@ -1,0 +1,44 @@
+<ion-view view-title="Breathe">
+  <ion-content class="padding">
+
+  <div ng-show="true" class="timer">
+    <div>
+      <p ng-show="running" class="action">Round {{ ds.iteration }} / {{ ds.numIterations }}</p>
+      <p ng-hide="running" class="action">Number of rounds: {{ ds.numIterations }}</p>
+    </div>
+
+    <div
+        round-progress
+        max="ds.max"
+        current="ds.current"
+        color="{{ds.color}}"
+        bgcolor="#eaeaea"
+        radius="100"
+        stroke="100"
+        semi="false"
+        rounded="false"
+        clockwise="true"
+        iterations="50"
+        animation="easeInOutQuart"></div>
+
+    <div>
+      <p ng-show="running" class="action">{{ ds.action }}: {{ ds.countdown }}</p>
+      <p ng-hide="running" class="action">Click play to start.</p>
+    </div>
+    <div>
+      <button ng-hide="running" ng-click="start()" class="control"><i class="icon ion-play"></i></button>
+      <button ng-show="running && !paused" ng-click="pause()" class="control"><i class="icon ion-pause"></i></button>
+      <button ng-show="running && paused" ng-click="resume()" class="control"><i class="icon ion-play"></i></button>
+      <button ng-click="stop()" class="control"><i class="icon ion-stop"></i></button>
+    </div>
+
+    <div style="display: none;">
+      <p>Current: {{ current }}<br>
+        Max: {{ max }}<br>
+        Color: {{ color }}<br>
+      </p>
+    </div>
+  </div>
+
+  </ion-content>
+</ion-view>
