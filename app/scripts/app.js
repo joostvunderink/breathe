@@ -31,7 +31,8 @@ angular.module('breathe', ['ionic', 'breathe.controllers', 'breathe.services', '
     'hold': 'hold breath'
   });
   $translateProvider.preferredLanguage('en');
-
+  $translateProvider.useSanitizeValueStrategy('sanitize');
+  
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
