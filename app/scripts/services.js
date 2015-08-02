@@ -2,11 +2,26 @@
 
 angular.module('breathe.services', [])
 
-.factory('Settings', function() {
+.factory('Settings', ['$localstorage', function($localstorage) {
+  function getInitialValue(settingName) {
+    var defaults = {
+      vibrate      : true,
+      base         : 5,
+      numIterations: 10,
+    };
+
+    var value = $localstorage.get(settingName);
+    if (value) {
+      return value;
+    }
+
+    return defaults[settingName];
+  }
+
   var settings = {
-    vibrate: true,
-    base: 5,
-    numIterations: 10,
+    vibrate      : getInitialValue('vibrate') === 'true',
+    base         : parseInt(getInitialValue('base')),
+    numIterations: parseInt(getInitialValue('numIterations')),
     vibrations: {
       in: [500],
       hold: [100, 100, 100, 100, 100],
@@ -20,8 +35,8 @@ angular.module('breathe.services', [])
     },
     set: function(name, value) {
       settings[name] = value;
+      $localstorage.set(name, value);
       return value;
     }
   };
-});
-
+}]);

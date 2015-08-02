@@ -2,7 +2,8 @@
 
 angular.module('breathe.controllers', [])
 
-.controller('BreatheCtrl', ['$scope', '$interval', 'Settings', '$cordovaVibration', function($scope, $interval, Settings, $cordovaVibration) {
+.controller('BreatheCtrl', ['$scope', '$interval', 'Settings', '$cordovaVibration', '$localstorage',
+function($scope, $interval, Settings, $cordovaVibration, $localstorage) {
   var delta = 40;
 
   var lastTick;
@@ -24,6 +25,7 @@ angular.module('breathe.controllers', [])
     if (Settings.get('vibrate')) {
       // TODO: Figure out why $cordovaVibration.vibrate(100) leads to an
       // 'undefined' error somewhere in the cordova library.
+      console.log('vibrate');
       navigator.vibrate(Settings.get('vibrations')[action]);
     }
   }
@@ -91,7 +93,7 @@ angular.module('breathe.controllers', [])
 }])
 .controller('SettingsCtrl', function($scope, Settings) {
   $scope.settings = {
-    vibrate: false,
+    vibrate: Settings.get('vibrate'),
     base: Settings.get('base'),
     numIterations: Settings.get('numIterations')
   };
@@ -106,7 +108,23 @@ angular.module('breathe.controllers', [])
   }
 
   $scope.save = save;
-});
+})
+.factory('$localstorage', ['$window', function($window) {
+  return {
+    set: function(key, value) {
+      $window.localStorage[key] = value;
+    },
+    get: function(key, defaultValue) {
+      return $window.localStorage[key] || defaultValue;
+    },
+    setObject: function(key, value) {
+      $window.localStorage[key] = JSON.stringify(value);
+    },
+    getObject: function(key) {
+      return JSON.parse($window.localStorage[key] || '{}');
+    }
+  }
+}]);;
 
 function range(start, end) {
     var foo = [];
