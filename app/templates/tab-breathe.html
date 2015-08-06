@@ -1,6 +1,18 @@
 <ion-view view-title="Breathe">
   <ion-content class="padding">
 
+  <div ng-hide="introSeen" class="intro">
+    <h3 class="intro">Breathe</h3>
+    <p class="intro">There exists a breathing exercise that stimulates the lymphatic system.</p>
+    <p class="intro">This application guides you through that exercise.</p>
+
+    <p class="intro">For more information, see<br>
+      Settings -> Information.</p>
+    <div style="text-align: center;">
+      <button ng-click="introOk()">OK</button>
+    </div>
+  </div>
+
   <div ng-show="true" class="timer">
     <div>
       <p ng-show="running" class="action">Round {{ ds.iteration }} / {{ ds.numIterations }}</p>
@@ -18,7 +30,7 @@
         semi="false"
         rounded="false"
         clockwise="true"
-        iterations="50"
+        iterations="10"
         animation="easeInOutQuart"></div>
 
     <div>

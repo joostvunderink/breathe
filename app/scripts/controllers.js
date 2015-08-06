@@ -20,6 +20,12 @@ function($scope, $interval, Settings, $cordovaVibration, $localstorage) {
   setInitialDs();
   $scope.running = false;
   $scope.paused  = false;
+  $scope.introSeen = Settings.get('introSeen');
+
+  $scope.introOk = function() {
+    Settings.set('introSeen', true);
+    $scope.introSeen = true;
+  }
 
   function vibrate(action) {
     if (Settings.get('vibrate')) {
