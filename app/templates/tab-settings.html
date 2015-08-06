@@ -4,6 +4,9 @@
         <ion-toggle ng-model="settings.vibrate" ng-change="save()">
             Vibrate during exercise
         </ion-toggle>
+        <ion-toggle ng-model="settings.smoothAnimation" ng-change="save()">
+            Smooth animation
+        </ion-toggle>
         <ion-item>
             <span style="text-align: left">Base time</span>
             <select ng-model="settings.base" ng-options="a for a in baseOptions" style="float: right;" ng-change="save()"></select>

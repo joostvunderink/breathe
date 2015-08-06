@@ -31,7 +31,11 @@ function($scope, $interval, Settings, $cordovaVibration, $localstorage) {
   }
 
   function updateDisplay() {
-    $scope.ds = iho.getDisplayStatus();
+    var ds = iho.getDisplayStatus();
+    if (!Settings.get('smoothAnimation')) {
+      ds.current = parseInt((ds.current + 1000) / 1000) * 1000;
+    }
+    $scope.ds = ds;
   }
 
   function update() {
@@ -93,18 +97,20 @@ function($scope, $interval, Settings, $cordovaVibration, $localstorage) {
 }])
 .controller('SettingsCtrl', function($scope, Settings) {
   $scope.settings = {
-    vibrate: Settings.get('vibrate'),
-    base: Settings.get('base'),
-    numIterations: Settings.get('numIterations')
+    vibrate        : Settings.get('vibrate'),
+    base           : Settings.get('base'),
+    numIterations  : Settings.get('numIterations'),
+    smoothAnimation: Settings.get('smoothAnimation'),
   };
 
   $scope.baseOptions = range(4, 20);
   $scope.numIterationsOptions = range(5, 20);
 
   function save() {
-    Settings.set('vibrate', $scope.settings.vibrate);
-    Settings.set('base', $scope.settings.base);
-    Settings.set('numIterations', $scope.settings.numIterations);
+    Settings.set('vibrate',         $scope.settings.vibrate);
+    Settings.set('base',            $scope.settings.base);
+    Settings.set('numIterations',   $scope.settings.numIterations);
+    Settings.set('smoothAnimation', $scope.settings.smoothAnimation);
   }
 
   $scope.save = save;
