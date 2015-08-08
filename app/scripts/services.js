@@ -9,6 +9,7 @@ angular.module('breathe.services', [])
       base         : 5,
       numIterations: 10,
       introSeen    : false,
+      smoothAnimation: true,
     };
 
     var value = $localstorage.get(settingName);
@@ -24,6 +25,7 @@ angular.module('breathe.services', [])
     base         : parseInt(getInitialValue('base')),
     numIterations: parseInt(getInitialValue('numIterations')),
     introSeen    : getInitialValue('introSeen') === 'true',
+    smoothAnimation: getInitialValue('smoothAnimation') === 'true',
     vibrations: {
       in: [500],
       hold: [100, 100, 100, 100, 100],
