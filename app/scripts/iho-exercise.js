@@ -49,7 +49,8 @@ function ihoExercise() {
       round             : 1,
       step              : 0,
       timeSinceStepStart: 0,
-      finished          : false
+      finished          : false,
+      countdown: parseInt(sequence[0].factor * settings.base / 1000)
     };
 
   }

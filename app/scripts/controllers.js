@@ -134,13 +134,15 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
 
   $scope.baseOptions = range(1, 20);
   $scope.numRoundsOptions = range(1, 20);
-  $scope.minRounds = 5;
-  $scope.maxRounds = 20;
+  $scope.minRounds = 4;
+  $scope.maxRounds = 100;
+  $scope.minBaseTime = 3;
+  $scope.maxBaseTime = 30;
 
   function save() {
     Settings.set('vibrate',         $scope.settings.vibrate);
     Settings.set('base',            $scope.settings.base);
-    Settings.set('numRounds',   $scope.settings.numRounds);
+    Settings.set('numRounds',       $scope.settings.numRounds);
     Settings.set('smoothAnimation', $scope.settings.smoothAnimation);
   }
 
@@ -154,6 +156,18 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
     if ($scope.settings.numRounds < $scope.minRounds) {
       $scope.settings.numRounds = $scope.minRounds;
     }
+    save();
+  }
+
+  $scope.modifyBaseTime = function(amount) {
+    $scope.settings.base += amount;
+    if ($scope.settings.base > $scope.maxBaseTime) {
+      $scope.settings.base = $scope.maxBaseTime;
+    }
+    if ($scope.settings.base < $scope.minBaseTime) {
+      $scope.settings.base = $scope.minBaseTime;
+    }
+    save();
   }
 })
 .factory('$localstorage', ['$window', function($window) {

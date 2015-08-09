@@ -9,10 +9,14 @@
         </ion-toggle>
         <ion-item>
             <span style="text-align: left">Base time</span>
-            <select ng-model="settings.base" ng-options="a for a in baseOptions" style="float: right;" ng-change="save()"></select>
+            <div style="float: right;">
+                <button class="btn btn-xs btn-success" ng-click="modifyBaseTime(-1)"><i class="icon ion-minus-round"></i></button>
+                <span class="steppervalue">{{ settings.base }}</span>
+                <button class="btn btn-xs btn-success" ng-click="modifyBaseTime(1)"><i class="icon ion-plus-round"></i></button>
+            </div>
         </ion-item>
         <ion-item>
-            <span style="text-align: left">Breathings per exercise</span>
+            <span style="text-align: left">Number of rounds per exercise</span>
             <div style="float: right;">
                 <button class="btn btn-xs btn-success" ng-click="modifyNumRounds(-1)"><i class="icon ion-minus-round"></i></button>
                 <span class="steppervalue">{{ settings.numRounds }}</span>
