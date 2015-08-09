@@ -20,7 +20,8 @@
       <div ng-show="running" style="width: 220px; margin: 0 auto;"><progressbar class="progress" value="100 * ds.iteration / ds.numIterations" type="success"><b>{{ ds.iteration }}</b></progressbar></div>
     </div>
 
-    <div style="background: url(images/timer-border-e-1.png); width: 220px; height: 221px; padding: 10px; margin: 0 auto;">
+    <div style="background: url(images/timer-border-e-1.png); width: 220px; height: 221px; padding: 10px; margin: 0 auto; position: relative;">
+      <div class="countdown"><span class="countdown">{{ ds.countdown }}</span></div>
       <div style="opacity: 0.5;"
           round-progress
           max="ds.max"
@@ -38,7 +39,7 @@
     </div>
 
     <div>
-      <p ng-show="running" class="action">{{ ds.action | translate | capitalize }}: {{ ds.countdown }}</p>
+      <p ng-show="running" class="action">{{ ds.action | translate | capitalize }}.</p>
       <p ng-hide="running" class="action">Click play to start.</p>
     </div>
     <div>
