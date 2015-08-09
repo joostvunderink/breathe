@@ -25,7 +25,7 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
     $scope.ds = {
       current: 0,
       max: 100,
-      numIterations: Settings.get('numIterations')
+      numRounds: Settings.get('numRounds')
     }; 
   }
   setInitialDs();
@@ -80,7 +80,7 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
     $scope.currentAction = action;
     iho.reset();
     iho.setSetting('base', Settings.get('base') * 1000);
-    iho.setSetting('numIterations', Settings.get('numIterations'));
+    iho.setSetting('numRounds', Settings.get('numRounds'));
     lastTick = new Date().getTime();
     $scope.running = true;
     $scope.paused = false;
@@ -122,31 +122,31 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
   $scope.settings = {
     vibrate        : Settings.get('vibrate'),
     base           : Settings.get('base'),
-    numIterations  : Settings.get('numIterations'),
+    numRounds  : Settings.get('numRounds'),
     smoothAnimation: Settings.get('smoothAnimation'),
   };
 
   $scope.baseOptions = range(1, 20);
-  $scope.numIterationsOptions = range(1, 20);
+  $scope.numRoundsOptions = range(1, 20);
   $scope.minRounds = 5;
   $scope.maxRounds = 20;
 
   function save() {
     Settings.set('vibrate',         $scope.settings.vibrate);
     Settings.set('base',            $scope.settings.base);
-    Settings.set('numIterations',   $scope.settings.numIterations);
+    Settings.set('numRounds',   $scope.settings.numRounds);
     Settings.set('smoothAnimation', $scope.settings.smoothAnimation);
   }
 
   $scope.save = save;
 
-  $scope.modifyMaxRounds = function(amount) {
-    $scope.settings.numIterations += amount;
-    if ($scope.settings.numIterations > $scope.maxRounds) {
-      $scope.settings.numIterations = $scope.maxRounds;
+  $scope.modifyNumRounds = function(amount) {
+    $scope.settings.numRounds += amount;
+    if ($scope.settings.numRounds > $scope.maxRounds) {
+      $scope.settings.numRounds = $scope.maxRounds;
     }
-    if ($scope.settings.numIterations < $scope.minRounds) {
-      $scope.settings.numIterations = $scope.minRounds;
+    if ($scope.settings.numRounds < $scope.minRounds) {
+      $scope.settings.numRounds = $scope.minRounds;
     }
   }
 })

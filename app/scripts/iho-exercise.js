@@ -1,5 +1,10 @@
 'use strict';
 
+// Terminology
+// A round is the sequence of breathing in, holding breath and breathing out.
+// A step is one of the 3 events: in, hold, out.
+// An exercise has a number of rounds.
+
 function ihoExercise() {
   var api = {
     getDisplayStatus: getDisplayStatus,
@@ -12,7 +17,7 @@ function ihoExercise() {
 
   var settings = {
     base: 5000,
-    numIterations: 10
+    numRounds: 10
   };
 
   var sequence = [
@@ -41,9 +46,9 @@ function ihoExercise() {
 
   function getInitialStatus() {
     return {
+      round             : 1,
       step              : 0,
       timeSinceStepStart: 0,
-      iteration         : 1,
       finished          : false
     };
 
@@ -73,8 +78,8 @@ function ihoExercise() {
 
   function updateDisplayStatus() {
     displayStatus = {
-      iteration    : status.iteration,
-      numIterations: settings.numIterations,
+      round        : status.round,
+      numRounds    : settings.numRounds,
       finished     : status.finished,
       max          : sequence[status.step].factor * settings.base,
       current      : status.timeSinceStepStart,
@@ -99,12 +104,12 @@ function ihoExercise() {
       status.step++;
 
       if (status.step >= sequence.length) {
-        status.iteration++;
+        status.round++;
         status.step = 0;
       }
 
-      if (status.iteration > settings.numIterations) {
-        status.iteration          = 0;
+      if (status.round > settings.numRounds) {
+        status.round              = 0;
         status.step               = 0;
         status.timeSinceStepStart = 0;
         status.finished           = true;

@@ -7,7 +7,7 @@ angular.module('breathe.services', [])
     var defaults = {
       vibrate      : true,
       base         : 5,
-      numIterations: 10,
+      numRounds    : 10,
       introSeen    : false,
       smoothAnimation: true,
     };
@@ -23,7 +23,7 @@ angular.module('breathe.services', [])
   var settings = {
     vibrate      : getInitialValue('vibrate') === 'true',
     base         : parseInt(getInitialValue('base')),
-    numIterations: parseInt(getInitialValue('numIterations')),
+    numRounds    : parseInt(getInitialValue('numRounds')),
     introSeen    : getInitialValue('introSeen') === 'true',
     smoothAnimation: getInitialValue('smoothAnimation') === 'true',
     vibrations: {
