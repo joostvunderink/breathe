@@ -63,3 +63,17 @@ span.steppervalue {
     padding: 0 10px 0 10px;
     font-weight: bold;
 }
+
+div.roundProgress {
+    height: 50px;
+}
+div.progress {
+    height: 30px;
+}
+div.round-progress-text {
+    padding-top: 5px;
+}
+span.roundProgress {
+    font-weight: bold;
+    font-size: 25px;
+}

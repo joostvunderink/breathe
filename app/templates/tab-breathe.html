@@ -17,7 +17,13 @@
     <div class="status">
       <div ng-show="ds.finished">Finished!</div>
       <p ng-hide="running" class="action">Rounds: {{ ds.numRounds }}</p>
-      <div ng-show="running" style="width: 220px; margin: 0 auto;"><progressbar class="progress" value="100 * ds.round / ds.numRounds" type="success"><b>{{ ds.round }}</b></progressbar></div>
+      <div ng-show="running" style="width: 220px; margin: 0 auto;" class="roundProgress">
+        <progressbar class="progress" value="100 * ds.round / ds.numRounds" type="success">
+          <div class="round-progress-text">
+            <span class="roundProgress">{{ ds.round }}</span>
+          </div>
+        </progressbar>
+      </div>
     </div>
 
     <div style="background: url(images/timer-border-e-1.png); width: 220px; height: 221px; padding: 10px; margin: 0 auto; position: relative;">
