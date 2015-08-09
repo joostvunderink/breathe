@@ -42,9 +42,9 @@
       <p ng-hide="running" class="action">Click play to start.</p>
     </div>
     <div>
-      <button ng-hide="running" ng-click="start()" class="control btn btn-success">p<i class="icon ion-play"></i></button>
+      <button ng-hide="running" ng-click="start()" class="control btn btn-success"><i class="icon ion-play"></i></button>
       <button ng-show="running && !paused" ng-click="pause()" class="control btn btn-info"><i class="icon ion-pause"></i></button>
-      <button ng-show="running && paused" ng-click="resume()" class="control btn btn-success">r<i class="icon ion-play"></i></button>
+      <button ng-show="running && paused" ng-click="resume()" class="control btn btn-success"><i class="icon ion-play"></i></button>
       <button ng-click="stop()" class="control btn btn-warning"><i class="icon ion-stop"></i></button>
     </div>
 
