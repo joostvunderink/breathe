@@ -2,8 +2,19 @@
 
 angular.module('breathe.controllers', [])
 
-.controller('BreatheCtrl', ['$scope', '$interval', 'Settings', '$cordovaVibration', '$localstorage',
-function($scope, $interval, Settings, $cordovaVibration, $localstorage) {
+.controller('BreatheCtrl', ['$scope', '$interval', '$window', 'Settings', '$cordovaVibration', '$localstorage',
+function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage) {
+  // A bit of a hack, using jQuery to accomplish this.
+  // For some reason, $scope.$watch(function() { return $window.innerWidth; })
+  // does not update when the window's width is changed.
+  $(window).resize(function(){
+    $scope.$apply(function() {
+      $scope.width = $window.innerWidth;
+      $scope.marginLeft = ($scope.width - $scope.timerSize) / 2;
+    });
+  });
+
+  $scope.timerSize = 200;
   var delta = 40;
 
   var lastTick;
@@ -42,6 +53,9 @@ function($scope, $interval, Settings, $cordovaVibration, $localstorage) {
       ds.current = parseInt((ds.current + 1000) / 1000) * 1000;
     }
     $scope.ds = ds;
+    if (ds.finished) {
+      $scope.running = false;
+    }
   }
 
   function update() {
@@ -109,8 +123,8 @@ function($scope, $interval, Settings, $cordovaVibration, $localstorage) {
     smoothAnimation: Settings.get('smoothAnimation'),
   };
 
-  $scope.baseOptions = range(4, 20);
-  $scope.numIterationsOptions = range(5, 20);
+  $scope.baseOptions = range(1, 20);
+  $scope.numIterationsOptions = range(1, 20);
 
   function save() {
     Settings.set('vibrate',         $scope.settings.vibrate);
