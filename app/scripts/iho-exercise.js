@@ -87,6 +87,10 @@ function ihoExercise() {
   // This method is used to update the status. In effect, it tells this class
   // how much time has passed. The delta variable is normally in milliseconds.
   function update(delta) {
+    if (status.finished) {
+      return;
+    }
+
     status.timeSinceStepStart += delta;
 
     while (status.timeSinceStepStart > sequence[status.step].factor * settings.base) {
@@ -99,8 +103,11 @@ function ihoExercise() {
         status.step = 0;
       }
 
-      if (status.iteration >= settings.numIterations) {
-        status.finished = true;
+      if (status.iteration > settings.numIterations) {
+        status.iteration          = 0;
+        status.step               = 0;
+        status.timeSinceStepStart = 0;
+        status.finished           = true;
       }
     }
 
