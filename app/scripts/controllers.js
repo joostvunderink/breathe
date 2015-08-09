@@ -22,16 +22,21 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
 
   var iho = new ihoExercise();
   function setInitialDs() {
-    $scope.ds = {
-      current: 0,
-      max: 100,
-      numRounds: Settings.get('numRounds')
-    }; 
+    $scope.ds = iho.getDisplayStatus();
   }
   setInitialDs();
   $scope.running = false;
   $scope.paused  = false;
   $scope.introSeen = Settings.get('introSeen');
+  determineRoundProgressType();
+  function determineRoundProgressType() {
+    var rptMap = {
+      0: 'success',
+      1: 'info',
+      2: 'warning'
+    };
+    $scope.roundProgressType = rptMap[$scope.ds.step];
+  }
 
   $scope.introOk = function() {
     Settings.set('introSeen', true);
@@ -53,6 +58,7 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
       ds.current = parseInt((ds.current + 1000) / 1000) * 1000;
     }
     $scope.ds = ds;
+    determineRoundProgressType();
     if (ds.finished) {
       $scope.running = false;
     }

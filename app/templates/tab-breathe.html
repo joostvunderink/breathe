@@ -18,7 +18,7 @@
       <div ng-show="ds.finished">Finished!</div>
       <p ng-hide="running" class="action">Rounds: {{ ds.numRounds }}</p>
       <div ng-show="running" style="width: 220px; margin: 0 auto;" class="roundProgress">
-        <progressbar class="progress" value="100 * ds.round / ds.numRounds" type="success">
+        <progressbar class="progress" type="{{roundProgressType}}" value="100 * ds.round / ds.numRounds" type="success">
           <div class="round-progress-text">
             <span class="roundProgress">{{ ds.round }}</span>
           </div>

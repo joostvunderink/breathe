@@ -23,17 +23,17 @@ function ihoExercise() {
   var sequence = [
     {
       action: 'in',
-      color: '#31B404',
+      color: '#5cb85c', // '#31B404',
       factor: 1
     },
     {
       action: 'hold',
-      color: '#FF8000',
+      color: '#5bc0de', // '#FF8000',
       factor: 4
     },
     {
       action: 'out',
-      color: '#A901DB',
+      color: '#f0ad4e', // '#A901DB',
       factor: 2
     }
   ];
@@ -80,6 +80,7 @@ function ihoExercise() {
     displayStatus = {
       round        : status.round,
       numRounds    : settings.numRounds,
+      step         : status.step,
       finished     : status.finished,
       max          : sequence[status.step].factor * settings.base,
       current      : status.timeSinceStepStart,
