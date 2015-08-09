@@ -128,6 +128,8 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
 
   $scope.baseOptions = range(1, 20);
   $scope.numIterationsOptions = range(1, 20);
+  $scope.minRounds = 5;
+  $scope.maxRounds = 20;
 
   function save() {
     Settings.set('vibrate',         $scope.settings.vibrate);
