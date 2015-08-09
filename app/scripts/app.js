@@ -28,7 +28,7 @@ angular.module('breathe', ['ionic', 'ui.bootstrap', 'breathe.controllers', 'brea
   $translateProvider.translations('en', {
     'in': 'breathe in',
     'out': 'breathe out',
-    'hold': 'hold breath'
+    'hold': 'hold your breath'
   });
   $translateProvider.preferredLanguage('en');
   $translateProvider.useSanitizeValueStrategy('sanitize');
