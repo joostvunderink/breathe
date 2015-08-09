@@ -78,11 +78,13 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
     var action = iho.getDisplayStatus().action;
     vibrate(action);
     $scope.currentAction = action;
+    iho.reset();
     iho.setSetting('base', Settings.get('base') * 1000);
     iho.setSetting('numIterations', Settings.get('numIterations'));
     lastTick = new Date().getTime();
     $scope.running = true;
     $scope.paused = false;
+    $scope.finished = false;
     intervalId = $interval(update, delta);
   }
 
@@ -109,6 +111,7 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
     $interval.cancel(intervalId);
     $scope.paused = false;
     $scope.running = false;
+    $scope.finished = false;
     $scope.pausedAfter = 0;
     setInitialDs();
   }
