@@ -13,7 +13,11 @@
         </ion-item>
         <ion-item>
             <span style="text-align: left">Breathings per exercise</span>
-            <select ng-model="settings.numIterations" ng-options="a for a in numIterationsOptions" style="float: right;" ng-change="save()"></select>
+            <div style="float: right;">
+                <button class="btn btn-xs btn-success" ng-click="modifyMaxRounds(-1)"><i class="icon ion-minus-round"></i></button>
+                <span class="steppervalue">{{ settings.numIterations }}</span>
+                <button class="btn btn-xs btn-success" ng-click="modifyMaxRounds(1)"><i class="icon ion-plus-round"></i></button>
+            </div>
         </ion-item>
     </ion-list>
   </ion-content>

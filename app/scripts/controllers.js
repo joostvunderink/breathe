@@ -139,6 +139,16 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
   }
 
   $scope.save = save;
+
+  $scope.modifyMaxRounds = function(amount) {
+    $scope.settings.numIterations += amount;
+    if ($scope.settings.numIterations > $scope.maxRounds) {
+      $scope.settings.numIterations = $scope.maxRounds;
+    }
+    if ($scope.settings.numIterations < $scope.minRounds) {
+      $scope.settings.numIterations = $scope.minRounds;
+    }
+  }
 })
 .factory('$localstorage', ['$window', function($window) {
   return {
