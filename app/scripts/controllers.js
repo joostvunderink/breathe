@@ -170,6 +170,8 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
     save();
   }
 })
+.controller('InfoController', function($scope, Settings) {
+})
 .factory('$localstorage', ['$window', function($window) {
   return {
     set: function(key, value) {

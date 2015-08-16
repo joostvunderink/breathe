@@ -7,25 +7,13 @@
     <p class="intro">This application guides you through a breathing exercise that stimulates the lymphatic system.</p>
 
     <p class="intro">For more information, see<br>
-      Settings -> Information.</p>
+      the Info tab.</p>
     <div style="text-align: center;">
       <button ng-click="introOk()">OK</button>
     </div>
   </div>
 
   <div ng-show="true" class="timer">
-    <div class="status">
-      <div ng-show="ds.finished">Finished!</div>
-      <p ng-hide="running" class="action">Rounds: {{ ds.numRounds }}</p>
-      <div ng-show="running" style="width: 220px; margin: 0 auto;" class="roundProgress">
-        <progressbar class="progress" type="{{roundProgressType}}" value="100 * ds.round / ds.numRounds" type="success">
-          <div class="round-progress-text">
-            <span class="roundProgress">{{ ds.round }}</span>
-          </div>
-        </progressbar>
-      </div>
-    </div>
-
     <div style="background: url(images/timer-border-e-1.png); width: 220px; height: 221px; padding: 10px; margin: 0 auto; position: relative;">
       <div class="countdown" ng-show="running"><span class="countdown">{{ ds.countdown }}</span></div>
       <div style="opacity: 0.5;"
@@ -48,6 +36,19 @@
       <p ng-show="running" class="action">{{ ds.action | translate | capitalize }}.</p>
       <p ng-hide="running" class="action">Click play to start.</p>
     </div>
+
+    <div class="status">
+      <div ng-show="ds.finished">Finished!</div>
+      <p ng-hide="running" class="action">Rounds: {{ ds.numRounds }}</p>
+      <div ng-show="running" style="width: 220px; margin: 0 auto;" class="roundProgress">
+        <progressbar class="progress" type="{{roundProgressType}}" value="100 * ds.round / ds.numRounds" type="success">
+          <div class="round-progress-text">
+            <span class="roundProgress">{{ ds.round }}</span>
+          </div>
+        </progressbar>
+      </div>
+    </div>
+
     <div>
       <button ng-hide="running" ng-click="start()" class="control btn btn-success"><i class="icon ion-play"></i></button>
       <button ng-show="running && !paused" ng-click="pause()" class="control btn btn-info"><i class="icon ion-pause"></i></button>

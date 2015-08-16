@@ -66,8 +66,17 @@ angular.module('breathe', ['ionic', 'ui.bootstrap', 'breathe.controllers', 'brea
         controller: 'SettingsCtrl'
       }
     }
-  });
+  })
 
+  .state('tab.info', {
+    url: '/info',
+    views: {
+      'tab-info': {
+        templateUrl: 'templates/tab-info.html',
+        controller: 'InfoController'
+      }
+    }
+  });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/breathe');
 
