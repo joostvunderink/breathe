@@ -1,0 +1,25 @@
+<ion-view view-title="Stats">
+  <ion-content>
+    <ion-list>
+        <ion-item>
+            <span style="text-align: left">Number of exercises done</span>
+            <span style="float: right;">{{ stats.numExercises }}</span>
+        </ion-item>
+        <ion-item>
+            <span style="text-align: left">Number of consecutive days exercised</span>
+            <span style="float: right;">{{ stats.consecutiveDays }}</span>
+        </ion-item>
+    </ion-list>
+
+    <div class="container">
+        <h3>Achievements</h3>
+
+        <div class="row" ng-repeat="row in achievements">
+          <div class="col-xs-4 letter-box" ng-repeat="a in row" >
+            <div class="achievement" ng-class="a.cssClass">{{ a.name }}</div>
+          </div>
+        </div>
+
+    </div>
+  </ion-content>
+</ion-view>

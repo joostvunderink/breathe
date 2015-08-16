@@ -6,6 +6,7 @@
 // 'breathe.services' is found in services.js
 // 'breathe.controllers' is found in controllers.js
 angular.module('breathe', ['ionic', 'ui.bootstrap', 
+  'angular.filter',
   'breathe.controllers', 'breathe.services', 'breathe.filters', 'breathe.localstorage',
   'angular-svg-round-progress', 'ngCordova', 'pascalprecht.translate'])
 
@@ -76,6 +77,15 @@ angular.module('breathe', ['ionic', 'ui.bootstrap',
       'tab-info': {
         templateUrl: 'templates/tab-info.html',
         controller: 'InfoController'
+      }
+    }
+  })
+  .state('tab.stats', {
+    url: '/stats',
+    views: {
+      'tab-stats': {
+        templateUrl: 'templates/tab-stats.html',
+        controller: 'StatsController'
       }
     }
   });

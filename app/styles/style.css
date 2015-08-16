@@ -81,3 +81,20 @@ span.roundProgress {
 em {
   font-style: italic;
 }
+
+.achievement {
+  padding: 10px 10px 10px 10px;
+  margin: 5px;
+  border: 1px dotted gray;
+  height: 60px;
+  vertical-align: middle;
+}
+
+.completed {
+  background-color: #c0ffc6;
+}
+
+.incomplete {
+  background-color: #ffc0c6;
+}
+
