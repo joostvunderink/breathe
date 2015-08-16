@@ -5,7 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'breathe.services' is found in services.js
 // 'breathe.controllers' is found in controllers.js
-angular.module('breathe', ['ionic', 'ui.bootstrap', 'breathe.controllers', 'breathe.services', 'breathe.filters', 'angular-svg-round-progress', 'ngCordova', 'pascalprecht.translate'])
+angular.module('breathe', ['ionic', 'ui.bootstrap', 
+  'breathe.controllers', 'breathe.services', 'breathe.filters', 'breathe.localstorage',
+  'angular-svg-round-progress', 'ngCordova', 'pascalprecht.translate'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

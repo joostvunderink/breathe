@@ -1,7 +1,4 @@
-'use strict';
-
-angular.module('breathe.controllers', [])
-
+angular.module('breathe.controllers')
 .controller('BreatheCtrl', ['$scope', '$interval', '$window', 'Settings', '$cordovaVibration', '$localstorage',
 function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage) {
   // A bit of a hack, using jQuery to accomplish this.
@@ -123,76 +120,4 @@ function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage)
   }
 
   $scope.stop = stop;
-}])
-.controller('SettingsCtrl', function($scope, Settings) {
-  $scope.settings = {
-    vibrate        : Settings.get('vibrate'),
-    base           : Settings.get('base'),
-    numRounds  : Settings.get('numRounds'),
-    smoothAnimation: Settings.get('smoothAnimation'),
-  };
-
-  $scope.baseOptions = range(1, 20);
-  $scope.numRoundsOptions = range(1, 20);
-  $scope.minRounds = 4;
-  $scope.maxRounds = 100;
-  $scope.minBaseTime = 3;
-  $scope.maxBaseTime = 30;
-
-  function save() {
-    Settings.set('vibrate',         $scope.settings.vibrate);
-    Settings.set('base',            $scope.settings.base);
-    Settings.set('numRounds',       $scope.settings.numRounds);
-    Settings.set('smoothAnimation', $scope.settings.smoothAnimation);
-  }
-
-  $scope.save = save;
-
-  $scope.modifyNumRounds = function(amount) {
-    $scope.settings.numRounds += amount;
-    if ($scope.settings.numRounds > $scope.maxRounds) {
-      $scope.settings.numRounds = $scope.maxRounds;
-    }
-    if ($scope.settings.numRounds < $scope.minRounds) {
-      $scope.settings.numRounds = $scope.minRounds;
-    }
-    save();
-  }
-
-  $scope.modifyBaseTime = function(amount) {
-    $scope.settings.base += amount;
-    if ($scope.settings.base > $scope.maxBaseTime) {
-      $scope.settings.base = $scope.maxBaseTime;
-    }
-    if ($scope.settings.base < $scope.minBaseTime) {
-      $scope.settings.base = $scope.minBaseTime;
-    }
-    save();
-  }
-})
-.controller('InfoController', function($scope, Settings) {
-})
-.factory('$localstorage', ['$window', function($window) {
-  return {
-    set: function(key, value) {
-      $window.localStorage[key] = value;
-    },
-    get: function(key, defaultValue) {
-      return $window.localStorage[key] || defaultValue;
-    },
-    setObject: function(key, value) {
-      $window.localStorage[key] = JSON.stringify(value);
-    },
-    getObject: function(key) {
-      return JSON.parse($window.localStorage[key] || '{}');
-    }
-  }
-}]);;
-
-function range(start, end) {
-    var foo = [];
-    for (var i = start; i <= end; i++) {
-        foo.push(i);
-    }
-    return foo;
-}
+}]);
