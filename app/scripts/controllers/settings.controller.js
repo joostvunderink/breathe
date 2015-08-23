@@ -1,4 +1,4 @@
-angular.module('breathe.controllers')
+angular.module('vb.controllers')
 .controller('SettingsCtrl', function($scope, Settings, $localstorage) {
   $scope.settings = {
     vibrate        : Settings.get('vibrate'),

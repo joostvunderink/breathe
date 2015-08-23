@@ -1,4 +1,4 @@
-angular.module('breathe.controllers')
+angular.module('vb.controllers')
 .controller('BreatheCtrl', ['$scope', '$interval', '$window', 'Settings', '$cordovaVibration', '$localstorage',
 function($scope, $interval, $window, Settings, $cordovaVibration, $localstorage) {
   // A bit of a hack, using jQuery to accomplish this.

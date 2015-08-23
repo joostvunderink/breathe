@@ -1,4 +1,4 @@
-angular.module('breathe.controllers')
+angular.module('vb.controllers')
 .controller('StatsController', function($scope, Settings) {
   var achievements = [
     {

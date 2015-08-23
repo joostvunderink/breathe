@@ -1,4 +1,4 @@
-angular.module('breathe.localstorage', [])
+angular.module('vb.localstorage', [])
 .factory('$localstorage', ['$window', function($window) {
   return {
     set: function(key, value) {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('breathe.filters', [])
+angular.module('vb.filters', [])
 .filter('capitalize', function() {
     return function(input) {
       if (!input || input.length === 0) {

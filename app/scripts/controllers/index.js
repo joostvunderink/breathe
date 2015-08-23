@@ -1,1 +1,1 @@
-angular.module('breathe.controllers', []);
+angular.module('vb.controllers', []);

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('breathe.services', [])
+angular.module('vb.services', [])
 
 .factory('Settings', ['$localstorage', function($localstorage) {
   function getInitialValue(settingName) {
