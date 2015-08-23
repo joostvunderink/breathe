@@ -332,7 +332,12 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/bower_components/angular-ui-router/release/angular-ui-router.js',
           '<%= yeoman.app %>/bower_components/ionic/release/js/ionic.js',
           '<%= yeoman.app %>/bower_components/ionic/release/js/ionic-angular.js',
-          '<%= yeoman.app %>/node_modules/should/should.js',
+          '<%= yeoman.app %>/../node_modules/should/should.js',
+          '<%= yeoman.app %>/scripts/controllers/index.js',
+          '<%= yeoman.app %>/scripts/controllers/breathe.controller.js',
+          '<%= yeoman.app %>/scripts/controllers/settings.controller.js',
+          '<%= yeoman.app %>/scripts/controllers/info.controller.js',
+          '<%= yeoman.app %>/scripts/controllers/stats.controller.js',
           '<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js',
           '<%= yeoman.test %>/mock/**/*.js',
           '<%= yeoman.test %>/spec/**/*.js'

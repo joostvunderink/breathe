@@ -6,7 +6,17 @@ describe('in out hold exercise', function() {
 
       // then
       var status = iho.getDisplayStatus();
-      status.should.have.keys(['iteration', 'numIterations', 'finished', 'action', 'color', 'countdown', 'max', 'current']);
+      status.should.have.keys([
+        'action',
+        'color',
+        'countdown',
+        'current',
+        'finished',
+        'max',
+        'numRounds',
+        'round',
+        'step',
+      ]);
       status.action.should.equal('in');
     });
   });
